@@ -22,10 +22,18 @@ public class InABucket {
         // to use the variable, you have to put data IN it first!
         walrus = "Sir Leroy Jenkins III";
         piesEaten = 42.1;
+        weightOfTeacupPig = 20;
+        grainsOfSand = 1000;
+        
 
         System.out.println("Meet my pet Walrus, " + walrus);
         System.out.print("He was a bit hungry today, and ate this many pies : ");
         System.out.println(piesEaten);
+        
+        System.out.println("Later, " + walrus + " came across a TeacupPig.");
+        System.out.println("This teacup pig weighed only " + weightOfTeacupPig + " pounds!!!");
+        System.out.print("The teacup pig said 'I may seem light, but perspective is key");
+        System.out.println(". See, I'm a lot heavier than " + grainsOfSand + " grains of sand!");
 
     }
 }

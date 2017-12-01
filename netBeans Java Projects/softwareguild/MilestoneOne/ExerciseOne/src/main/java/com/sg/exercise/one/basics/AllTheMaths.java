@@ -30,6 +30,9 @@ public class AllTheMaths {
 
         System.out.print("8043.52 minus 4.2 plus 23.0 divided by 56.0 times -76.13 is: ");
         System.out.println(8043.52 - 4.2 + 23.0 / 56.0 * -76.13);
+        // If the decimals of 23 and 56 are removed, the output becomes 8039.320000000001
+        // This is most likely because the program treats them as int now, instead of float, so the operations
+        // with them involved equate to int.
 
         System.out.print("11111 modulus 3 minus 67 minus 1 plus 9 is: ");
         System.out.println(11111 % 3 - 67 - 1 + 9);
