@@ -5,13 +5,16 @@
  */
 package com.sg.exercisesix.whilesAndDos;
 
+import java.util.Random;
+
 /**
  *
  * @author Jesse
  */
-public class LovesMe {
+public class MaybeItLovesMe {
     public static void main(String[] srgs){
-        int pluck = 34;
+        Random randomizer = new Random();
+        int pluck = randomizer.nextInt(89 + 1 - 13) + 13;
         boolean lovesMe = false;
         
         System.out.println("Well here goes nothing...");
@@ -29,7 +32,12 @@ public class LovesMe {
             
         }
         
-        System.out.println("I knew it! It LOVES ME!");
+        if (lovesMe) {
+            System.out.println("Oh, wow! It really LOVES ME!");
+        } else {
+            System.out.println("Aww, bummer.");
+        }
+        
         
     }
 }

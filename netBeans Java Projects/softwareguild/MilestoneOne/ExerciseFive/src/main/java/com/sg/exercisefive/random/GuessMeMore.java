@@ -23,23 +23,26 @@ public class GuessMeMore {
         guessedNumberInput = myScanner.nextLine();
         guessedNumber = Integer.parseInt(guessedNumberInput);
         
-        System.out.println(rightNumber);
-        do {
-            if (guessedNumber < rightNumber){
-                System.out.println("Ha, nice try - too low! Try again!");
-                System.out.print("Your guess: ");
-                guessedNumberInput = myScanner.nextLine();
-                guessedNumber = Integer.parseInt(guessedNumberInput);
-            } else if (guessedNumber > rightNumber) {
-                System.out.println("Too bad, way too high. Try again!");
-                System.out.print("Your guess: ");
-                guessedNumberInput = myScanner.nextLine();
-                guessedNumber = Integer.parseInt(guessedNumberInput);
-            }
-            
-        } while (guessedNumber != rightNumber);
+        //System.out.println(rightNumber);
         
-        System.out.println("Wow, nice guess! That was it!");
+        if (guessedNumber < rightNumber){
+            System.out.println("Ha, nice try - too low! Try again!");
+            System.out.print("Your guess: ");
+            guessedNumberInput = myScanner.nextLine();
+            guessedNumber = Integer.parseInt(guessedNumberInput);
+        } else if (guessedNumber > rightNumber) {
+            System.out.println("Too bad, way too high. Try again!");
+            System.out.print("Your guess: ");
+            guessedNumberInput = myScanner.nextLine();
+            guessedNumber = Integer.parseInt(guessedNumberInput);
+        }
+        
+        if (guessedNumber == rightNumber) {
+            System.out.println("Wow, nice guess! That was it!");
+        } else {
+            System.out.println("Better luck next time!");
+        }
+        
         
         
         
