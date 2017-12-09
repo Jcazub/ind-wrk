@@ -124,7 +124,7 @@ public class FinalInterestCalc {
         
     }
     
-    public static String getInput () { 
+    public static String getInput() { 
         return myScanner.nextLine();
     }
     
