@@ -115,5 +115,4 @@ public class RockPaperScissors {
         return randomizer.nextInt(3) + 1;
     }
     
-    
 }
