@@ -57,7 +57,7 @@ public class RockPaperScissors {
         
         for (int i = 0; i < rounds; i++){
             do {
-                System.out.println("Rock, paper or scissors?");  
+                System.out.print("Rock, paper or scissors?");  
                 choice = getLowerCaseInput();
 
                 switch (choice) {
