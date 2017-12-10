@@ -99,8 +99,7 @@ public class OldRockPaperScissors {
             System.out.println("You lost! Bummer.");
         } else {
             System.out.println("It's a GRAND OLE TIE!");
-        }
-    
+        }   
     }
     
     public static int getNumber() {
