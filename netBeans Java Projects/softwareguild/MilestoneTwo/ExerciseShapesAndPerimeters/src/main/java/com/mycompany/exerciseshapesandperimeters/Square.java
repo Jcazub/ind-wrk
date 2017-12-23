@@ -7,14 +7,11 @@ package com.mycompany.exerciseshapesandperimeters;
 
 /**
  *
- * @author jesseazubuike
+ * @author Jesse
  */
-public abstract class Shape {
+public class Square extends Rectangle {
     
-    protected String color;
-    
-    abstract double getArea();
-    
-    abstract double getPerimeter();
-    
+    Square(float inputSide) {
+        super(inputSide, inputSide);
+    }
 }
