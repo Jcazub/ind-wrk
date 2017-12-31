@@ -6,6 +6,7 @@
 package com.sg.addressbook.dao;
 
 import com.sg.addressbook.dto.Address;
+import java.util.List;
 
 /**
  *
@@ -13,15 +14,14 @@ import com.sg.addressbook.dto.Address;
  */
 public interface AddressBookDao {
     
-    void addAddress();
+    Address addAddress(String lastName, Address address);
     
-    Address removeAddress(String lastName);
+    Address deleteAddress(String lastName);
     
     Address findAddress(String lastName);
     
-    public void listAddressCount(Address address);
+    Integer listAddressCount();
     
-    public void listAddresses();
-            
-            
+    List<Address> listAddresses();
+           
 }
