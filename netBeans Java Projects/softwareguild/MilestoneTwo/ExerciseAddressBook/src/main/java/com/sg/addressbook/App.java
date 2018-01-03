@@ -17,6 +17,7 @@ import com.sg.addressbook.ui.UserIOConsoleImpl;
  * @author Jesse
  */
 public class App {
+    
     public static void main(String[] args) {
         AddressBookDao myDao = new AddressBookDaoFileImpl();
         UserIO myIo = new UserIOConsoleImpl();
