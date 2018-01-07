@@ -101,17 +101,46 @@ public class DVDLibraryView {
     }
     
     public DVD getDVDEditChoices(DVD dvdToEdit) {
-        String directorName = io.readString("Director Name: ");
-        String studio = io.readString("Studio: ");
-        String releaseDate = io.readString("Release Date (year, month, day i.e. 20170101): ");
-        String mpaaRating = io.readString("MPAA Rating: ");
-        String additionalNotes = io.readString("Additional notes: ");
+ 
+        Boolean keepGoing = true;
         
-        dvdToEdit.setDirectorName(directorName);
-        dvdToEdit.setStudio(studio);
-        dvdToEdit.setReleaseDate(releaseDate);
-        dvdToEdit.setMpaaRating(mpaaRating);
-        dvdToEdit.setAdditionalNote(additionalNotes);
+        do {
+            io.print("     Which field would you like to edit?");
+            io.print("              1. Director Name");
+            io.print("              2. Studio");
+            io.print("              3. Release Date");
+            io.print("              4. MPAA Rating");
+            io.print("              5. Additional notes");
+            int editChoice = io.readInt("Choice: ",1,5);
+        
+            switch (editChoice) {
+            
+            case 1: 
+                dvdToEdit.setDirectorName(io.readString("Director Name: "));
+                break;
+            case 2:
+                dvdToEdit.setStudio(io.readString("Studio: "));
+                break;
+            case 3:
+                dvdToEdit.setReleaseDate(io.readString("Release Date: "));
+                break;
+            case 4:
+                dvdToEdit.setMpaaRating(io.readString("MPAA Rating: "));
+                break;
+            case 5:
+                dvdToEdit.setAdditionalNote(io.readString("Additional notes: "));
+                break;
+            default:
+                this.unknownCommand();
+            } 
+            
+            String another = io.readString("Edit another field? (y/n): ");
+            
+            if(!another.equalsIgnoreCase("y")) {
+                keepGoing = false;
+            }
+        } while (keepGoing);
+        
         
         return dvdToEdit;
     }

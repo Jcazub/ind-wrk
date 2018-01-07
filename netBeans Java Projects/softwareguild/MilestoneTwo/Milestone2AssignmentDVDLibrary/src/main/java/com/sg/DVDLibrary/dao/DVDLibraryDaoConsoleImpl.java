@@ -44,6 +44,13 @@ public class DVDLibraryDaoConsoleImpl implements DVDLibraryDao {
         writeToLibrary();
         return removedDvd;
     }
+    
+    @Override
+    public DVD editDVD(String title, DVD dvdToEdit) throws DVDLibraryDaoException {
+        DVD editedDvd = DVDLibrary.put(title, dvdToEdit);
+        writeToLibrary();
+        return editedDvd;
+    }
 
     @Override
     public DVD findDVD(String title) throws DVDLibraryDaoException {

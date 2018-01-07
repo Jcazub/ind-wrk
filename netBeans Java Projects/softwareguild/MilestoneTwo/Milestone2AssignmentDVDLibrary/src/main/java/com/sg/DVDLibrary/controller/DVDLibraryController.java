@@ -115,7 +115,7 @@ public class DVDLibraryController {
             DVD editedDvd;
 
             editedDvd = view.getDVDEditChoices(dvdToEdit);
-            dao.addDVD(editedDvd.getTitle(), editedDvd);
+            dao.editDVD(editedDvd.getTitle(), editedDvd);
             view.editDVDBannerSuccess();
         } else {
             view.editDVDBannerAborted();

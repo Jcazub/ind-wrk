@@ -5,6 +5,8 @@
  */
 package com.sg.DVDLibrary.dto;
 
+import java.util.Objects;
+
 /**
  *
  * @author Jesse
@@ -59,5 +61,52 @@ public class DVD {
     public String getTitle() {
         return title;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.title);
+        hash = 79 * hash + Objects.hashCode(this.mpaaRating);
+        hash = 79 * hash + Objects.hashCode(this.directorName);
+        hash = 79 * hash + Objects.hashCode(this.studio);
+        hash = 79 * hash + Objects.hashCode(this.additionalNote);
+        hash = 79 * hash + Objects.hashCode(this.releaseDate);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DVD other = (DVD) obj;
+        if (!Objects.equals(this.title, other.title)) {
+            return false;
+        }
+        if (!Objects.equals(this.mpaaRating, other.mpaaRating)) {
+            return false;
+        }
+        if (!Objects.equals(this.directorName, other.directorName)) {
+            return false;
+        }
+        if (!Objects.equals(this.studio, other.studio)) {
+            return false;
+        }
+        if (!Objects.equals(this.additionalNote, other.additionalNote)) {
+            return false;
+        }
+        if (!Objects.equals(this.releaseDate, other.releaseDate)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
     
 }

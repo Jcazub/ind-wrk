@@ -18,6 +18,8 @@ public interface DVDLibraryDao {
     
     DVD removeDVD(String title) throws DVDLibraryDaoException;
     
+    DVD editDVD(String title, DVD dvdToEdit) throws DVDLibraryDaoException;
+    
     DVD findDVD(String title) throws DVDLibraryDaoException;
     
     List findAllDVDs() throws DVDLibraryDaoException;
