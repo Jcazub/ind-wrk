@@ -40,7 +40,7 @@ public class DVDLibraryView {
         String title = io.readString("Title: ");
         String directorName = io.readString("Director: ");
         String studio = io.readString("Studio: ");
-        String releaseDate = io.readString("Release Date (year, month, day i.e. 20170101): ");
+        String releaseDate = io.readString("Release Date (yyyy-MM-dd i.e. 2017-01-01): ");
         String mpaaRating = io.readString("MPAA Rating: ");
         String additionalNotes = io.readString("Additional notes: ");
         
@@ -164,7 +164,7 @@ public class DVDLibraryView {
         io.print(dvdToDisplay.getTitle());
         io.print(dvdToDisplay.getDirectorName());
         io.print(dvdToDisplay.getStudio());
-        io.print(dvdToDisplay.getReleaseDate());
+        io.print(String.valueOf(dvdToDisplay.getReleaseDate()));
         io.print(dvdToDisplay.getMpaaRating());
         io.print(dvdToDisplay.getAdditionalNote());
         io.print("");

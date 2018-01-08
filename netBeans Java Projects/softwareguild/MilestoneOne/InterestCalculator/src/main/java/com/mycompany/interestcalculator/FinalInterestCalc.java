@@ -38,8 +38,11 @@ public class FinalInterestCalc {
         float currentBalance = principal;
         int year = 2017;
         float quarterlyInterestMultiplier = (1 + (annualInterestRate/4) /100);
+        System.out.println("q" + quarterlyInterestMultiplier);
         float monthlyInterestMultiplier = (1 + (annualInterestRate/12) /100);
+        System.out.println("q" + monthlyInterestMultiplier);
         float dailyInterestMultiplier = (1 + (annualInterestRate/365) /100);
+        System.out.println("q" + dailyInterestMultiplier);
         // System.out.println(monthlyInterestMultiplier);
         
         

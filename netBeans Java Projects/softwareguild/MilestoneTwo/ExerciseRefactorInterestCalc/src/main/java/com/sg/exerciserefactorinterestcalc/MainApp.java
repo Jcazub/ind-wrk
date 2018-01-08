@@ -11,20 +11,16 @@ package com.sg.exerciserefactorinterestcalc;
  */
 public class MainApp {
     public static void main(String[] args) {
-        ConsoleIO getUserInput = new ConsoleIO();
+        UserIO io = new UserIOConsoleImpl();
         InterestCalc myInterestCalc = new InterestCalc();
         
-        System.out.print("Input an annual interest rate: ");
-        myInterestCalc.setAnnualInterestRate(getUserInput.getNumberFloat());
+        myInterestCalc.setAnnualInterestRate(io.readString("Input an annual interest rate: "));
+          
+        myInterestCalc.setPrincipal(io.readString("Input a starting principal: "));
         
-        System.out.print("Input a starting principal: ");
-        myInterestCalc.setPrincipal(getUserInput.getNumberFloat());
+        myInterestCalc.setYearsInFund(io.readInt("Input total years in fund: "));
         
-        System.out.print("Input total years in fund: ");
-        myInterestCalc.setYearsInFund(getUserInput.getNumberFloat());
-        
-        System.out.print("Quarterly, monthly or daily? ");
-        myInterestCalc.setReportRange(getUserInput.getString());
+        myInterestCalc.setReportRange(io.readString("Quarterly, monthly or daily? "));
               
         System.out.println("");
         
