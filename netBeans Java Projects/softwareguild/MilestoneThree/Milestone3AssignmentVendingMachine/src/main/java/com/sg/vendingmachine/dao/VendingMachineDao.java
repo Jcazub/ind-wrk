@@ -21,7 +21,7 @@ public interface VendingMachineDao {
     VendingItem editItemInInventory(String name, VendingItem item) throws VendingMachinePersistenceException;
     
     VendingItem getItemFromInventory(String name) throws VendingMachinePersistenceException;
-    
+        
     List<VendingItem> getAllItemsInInventory() throws VendingMachinePersistenceException;
     
     List<VendingItem> getItemsInStock() throws VendingMachinePersistenceException;

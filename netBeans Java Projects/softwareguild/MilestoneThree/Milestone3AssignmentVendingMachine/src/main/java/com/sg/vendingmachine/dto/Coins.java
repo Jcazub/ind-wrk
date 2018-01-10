@@ -9,6 +9,8 @@ package com.sg.vendingmachine.dto;
  *
  * @author Jesse
  */
+
+// not currently in use
 public enum Coins {
     QUARTERS, DIMES, NICKELS, PENNIES;
 }

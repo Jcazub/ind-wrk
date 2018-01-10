@@ -57,7 +57,7 @@ public class VendingMachineDaoFileImpl implements VendingMachineDao {
         VendingItem retrievedItem = vendingMachineInventory.get(name);
         return retrievedItem;
     }
-
+    
     @Override
     public List<VendingItem> getAllItemsInInventory() throws VendingMachinePersistenceException {
         loadMachineInventory();

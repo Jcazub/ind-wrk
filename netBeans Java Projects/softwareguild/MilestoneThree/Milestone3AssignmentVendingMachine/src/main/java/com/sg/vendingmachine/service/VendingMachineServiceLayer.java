@@ -24,6 +24,8 @@ public interface VendingMachineServiceLayer {
     
     VendingItem getItemFromInventory(String name) throws NoItemInInventoryException, VendingMachinePersistenceException;
     
+    void checkIfInStock(String name) throws VendingMachineOutOfStockException, VendingMachinePersistenceException;
+    
     String purchaseItemInInventory(VendingItem item, BigDecimal money) throws InsufficientFundsException, VendingMachinePersistenceException;
     
     List<VendingItem> getAllItemsInInventory()throws VendingMachinePersistenceException;

@@ -12,6 +12,7 @@ import com.sg.vendingmachine.service.InsufficientFundsException;
 import com.sg.vendingmachine.service.ItemAlreadyInInventoryException;
 import com.sg.vendingmachine.service.NoItemInInventoryException;
 import com.sg.vendingmachine.service.VendingMachineDataValidationException;
+import com.sg.vendingmachine.service.VendingMachineOutOfStockException;
 import com.sg.vendingmachine.service.VendingMachineServiceLayer;
 import com.sg.vendingmachine.ui.VendingMachineInputErrorException;
 import com.sg.vendingmachine.ui.VendingMachineView;
@@ -101,22 +102,26 @@ public class VendingMachineController {
                     }
                 
                 BigDecimal userCash = inputMoney();
-                VendingItem itemInStock = null;
+                VendingItem itemSelected = null;
                 String selection = "";
                 
                 do {
                     selection = getSelection();
                     
                     try {
-                        itemInStock = checkIfInInventory(selection);
+                        itemSelected = checkIfInInventory(selection);
+                        checkIfInStock(itemSelected.getName());
                     } catch (NoItemInInventoryException e) {
                         displayReselect();
                         view.displayError(e.getMessage());
+                    } catch (VendingMachineOutOfStockException e) {
+                        itemSelected = null;
+                        view.displayError(e.getMessage());
                     }
-                } while (itemInStock == null);
+                } while (itemSelected == null);
                 
                     try {
-                       tryToPurchaseItem(itemInStock, userCash); 
+                       tryToPurchaseItem(itemSelected, userCash); 
                     } catch (InsufficientFundsException e) {
                         view.displayError(e.getMessage());
                         continue;
@@ -167,6 +172,10 @@ public class VendingMachineController {
     
     private void displayReselect() {
         view.displayReselect();
+    }
+    
+    private void checkIfInStock(String name) throws VendingMachineOutOfStockException, VendingMachinePersistenceException {
+        service.checkIfInStock(name);
     }
     
     private void tryToPurchaseItem(VendingItem item, BigDecimal money) throws VendingMachinePersistenceException, InsufficientFundsException {

@@ -11,6 +11,7 @@ import com.sg.vendingmachine.dto.Change;
 import com.sg.vendingmachine.dto.VendingItem;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -68,6 +69,18 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
             throw new NoItemInInventoryException("Item cannot be found in inventory");
         }
         return item;
+    }
+    
+    @Override
+    public void checkIfInStock(String name) throws VendingMachineOutOfStockException, VendingMachinePersistenceException {
+   
+        List<VendingItem> inStock = dao.getItemsInStock().stream()
+                .filter(i -> i.getName().equals(name))
+                .collect(Collectors.toList());
+        
+        if (inStock.isEmpty()) {
+            throw new VendingMachineOutOfStockException("Item is out of stock");
+        }
     }
     
     @Override
