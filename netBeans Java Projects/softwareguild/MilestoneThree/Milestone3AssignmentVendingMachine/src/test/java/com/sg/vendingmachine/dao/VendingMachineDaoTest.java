@@ -6,6 +6,7 @@
 package com.sg.vendingmachine.dao;
 
 import com.sg.vendingmachine.dto.VendingItem;
+import com.sg.vendingmachine.service.VendingMachineDataValidationException;
 import java.math.BigDecimal;
 import java.util.List;
 import org.junit.After;
@@ -135,7 +136,6 @@ public class VendingMachineDaoTest {
         testItem1.setPrice(new BigDecimal("1"));
 
         dao.addItemToInventory(testItem1.getName(), testItem1);
-
 
         assertEquals(1, (int) dao.getItemsInStock().size());
         

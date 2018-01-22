@@ -13,6 +13,8 @@ import com.sg.DVDLibrary.dao.DVDLibraryLambdaDaoConsoleImpl;
 import com.sg.DVDLibrary.ui.DVDLibraryView;
 import com.sg.DVDLibrary.ui.UserIO;
 import com.sg.DVDLibrary.ui.UserIOConsoleImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  *
@@ -21,13 +23,18 @@ import com.sg.DVDLibrary.ui.UserIOConsoleImpl;
 public class App {
     public static void main(String[]args) {
         
-        //Dependencies declared and initialized
-        UserIO myIo = new UserIOConsoleImpl();
-        DVDLibraryDao myDao = new DVDLibraryDaoConsoleImpl();
-        DVDLibraryView myView = new DVDLibraryView(myIo);
-        DVDLibraryController controller = new DVDLibraryController(myView, myDao);
-        
-        //Main code run
+//        //Dependencies declared and initialized
+//        UserIO myIo = new UserIOConsoleImpl();
+//        DVDLibraryDao myDao = new DVDLibraryDaoConsoleImpl();
+//        DVDLibraryView myView = new DVDLibraryView(myIo);
+//        DVDLibraryController controller = new DVDLibraryController(myView, myDao);
+//        
+//        //Main code run
+//        controller.run();
+
+       ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+       DVDLibraryController controller = 
+           ctx.getBean("controller", DVDLibraryController.class);
         controller.run();
         
     }

@@ -1,5 +1,1 @@
-newDVD::brand new director::brand new studio::2017-09-22::R::tesing DateTime Api
-The Terminator::James Cameron::Orion Pictures::1984-10-26::R::A cult classic.
-newnewDVD::newnew Director::newnew Studio::2017-09-26::PG-13::testing DateTime API
-Avatar::James Cameron::20th Century Fox::2009-12-10::PG-13::Greatest CGI in a movie to date
-Titanic::James Cameron::Paramount Pictures::1997-11-01::PG-13::Launched Leonardo Dicaprio's career. Also listed as one of the best movies made of all time.
+TestDVD::TestDirector::TestStudio::2017-12-31::R::This is a test case

@@ -58,7 +58,8 @@ public class VendingMachineServiceLayerTest {
         VendingItem testItem = new VendingItem("chocolate");
         testItem.setPrice(new BigDecimal(2));
         testItem.setInventory(20);
-        service.addItemToInventory(testItem.getName(), testItem);
+        VendingItem addedItem = service.addItemToInventory(testItem.getName(), testItem);
+        assertEquals(testItem.getName(), addedItem.getName());
     }
     
     @Test
@@ -205,6 +206,16 @@ public class VendingMachineServiceLayerTest {
     @Test
     public void testGetItemsInStock() throws Exception {
         assertEquals(0, service.getItemsInStock().size());
+    }
+    
+    @Test
+    public void testCheckItemInStock() throws Exception {
+        try {
+            service.checkIfInStock("licorice");
+            fail("Expected VendingMachineOutOfStockException to be thrown");
+        } catch (VendingMachineOutOfStockException e) {
+            return;
+        }
     }
     
 }

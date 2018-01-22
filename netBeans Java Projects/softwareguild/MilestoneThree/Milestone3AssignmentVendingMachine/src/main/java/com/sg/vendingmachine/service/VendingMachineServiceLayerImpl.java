@@ -138,10 +138,10 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
         
         if (item.getName()== null
                 || item.getName().trim().length() == 0
-                || item.getPrice() == new BigDecimal(0)
-                || item.getInventory() == 0) {
+                || item.getPrice().compareTo(new BigDecimal(0)) <= 0 
+                || item.getInventory() <= 0) {
             
-            throw new VendingMachineDataValidationException("ERROR: Name not given and/or price/inventory 0.");
+            throw new VendingMachineDataValidationException("ERROR: Name not given and/or price/inventory not valid.");
                 }
     }
     

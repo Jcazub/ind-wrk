@@ -318,7 +318,7 @@ public class VendingMachineController {
         String selection = getSelection();
         try {
             VendingItem selectedItem = service.getItemFromInventory(selection);
-            view.displayItem(selectedItem);
+            view.displayItemDetails(selectedItem);
         } catch (NoItemInInventoryException e) {
             view.displayError(e.getMessage());
         }
@@ -326,12 +326,12 @@ public class VendingMachineController {
     
     private void viewInStock() throws VendingMachinePersistenceException{
         List<VendingItem> inStock = service.getItemsInStock();
-        view.displayAllItems(inStock);
+        view.displayInventoryDetails(inStock);
     }
     
     private void viewAll() throws VendingMachinePersistenceException{
         List<VendingItem> allItems = service.getAllItemsInInventory();
-        view.displayAllItems(allItems);
+        view.displayInventoryDetails(allItems);
         
     }
     private void unknownCommand() {

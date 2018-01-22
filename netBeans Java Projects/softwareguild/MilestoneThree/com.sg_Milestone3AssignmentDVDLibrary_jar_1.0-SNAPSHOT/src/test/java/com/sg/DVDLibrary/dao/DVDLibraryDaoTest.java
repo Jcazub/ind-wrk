@@ -14,6 +14,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  *
@@ -21,7 +23,9 @@ import org.junit.Test;
  */
 public class DVDLibraryDaoTest {
     
-    private DVDLibraryDao dao = new DVDLibraryDaoConsoleImpl();
+    private ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+    
+    private DVDLibraryDao dao = ctx.getBean("DVDLibraryDao", DVDLibraryDao.class);
     
     public DVDLibraryDaoTest() {
     }
@@ -56,7 +60,7 @@ public class DVDLibraryDaoTest {
         DVD testDVD = new DVD("TestDVD");
         testDVD.setDirectorName("TestDirector");
         testDVD.setStudio("TestStudio");
-        testDVD.setReleaseDate("Dec 31 2017");
+        testDVD.setReleaseDate("2017-12-31");
         testDVD.setMpaaRating("R");
         testDVD.setAdditionalNote("This is a test case");
         
@@ -75,7 +79,7 @@ public class DVDLibraryDaoTest {
         DVD testDVD = new DVD("TestDVD");
         testDVD.setDirectorName("TestDirector");
         testDVD.setStudio("TestStudio");
-        testDVD.setReleaseDate("Dec 31 2017");
+        testDVD.setReleaseDate("2017-12-31");
         testDVD.setMpaaRating("R");
         testDVD.setAdditionalNote("This is a test case");
         
@@ -98,7 +102,7 @@ public class DVDLibraryDaoTest {
         DVD testDVD = new DVD("TestDVD");
         testDVD.setDirectorName("TestDirector");
         testDVD.setStudio("TestStudio");
-        testDVD.setReleaseDate("Dec 31 2017");
+        testDVD.setReleaseDate("2017-12-31");
         testDVD.setMpaaRating("R");
         testDVD.setAdditionalNote("This is a test case");
         
@@ -117,7 +121,7 @@ public class DVDLibraryDaoTest {
         DVD testDVD = new DVD("TestDVD");
         testDVD.setDirectorName("TestDirector");
         testDVD.setStudio("TestStudio");
-        testDVD.setReleaseDate("Dec 31 2017");
+        testDVD.setReleaseDate("2017-12-31");
         testDVD.setMpaaRating("R");
         testDVD.setAdditionalNote("This is a test case");
         
@@ -126,7 +130,7 @@ public class DVDLibraryDaoTest {
         DVD testDVD2 = new DVD("TestDVD2");
         testDVD2.setDirectorName("TestDirector2");
         testDVD2.setStudio("TestStudio2");
-        testDVD2.setReleaseDate("Nov 31 2017");
+        testDVD2.setReleaseDate("2017-11-30");
         testDVD2.setMpaaRating("PG - 13");
         testDVD2.setAdditionalNote("This is another test case");
         

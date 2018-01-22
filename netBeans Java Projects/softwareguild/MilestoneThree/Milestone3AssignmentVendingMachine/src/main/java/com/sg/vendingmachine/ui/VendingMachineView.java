@@ -30,6 +30,15 @@ public class VendingMachineView {
         io.print(itemToDisplay.getName() + ": $" + itemToDisplay.getPrice());
     }
     
+    public void displayItemDetails(VendingItem itemToDisplay) {
+        io.print(itemToDisplay.getName() + ": $" + itemToDisplay.getPrice() + ", inventory: " + itemToDisplay.getInventory());
+    }
+    
+    public void displayInventoryDetails(List<VendingItem> inInventory) {
+        inInventory.stream()
+                .forEach(i -> io.print(i.getName() + ": $" + i.getPrice() + ", inventory: " + i.getInventory()));
+    }
+    
     public String getSelection() {
         return io.readString("Selection?: ");
     }
