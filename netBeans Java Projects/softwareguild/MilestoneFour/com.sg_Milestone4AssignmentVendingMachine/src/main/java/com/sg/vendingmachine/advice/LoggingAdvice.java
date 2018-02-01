@@ -27,6 +27,7 @@ public class LoggingAdvice {
         for (Object currentArg : args) {
             auditEntry += currentArg;
         }
+  
         try {
             auditDao.writeAuditEntry(auditEntry);
         } catch (VendingMachinePersistenceException e) {
