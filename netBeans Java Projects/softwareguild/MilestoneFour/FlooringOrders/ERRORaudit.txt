@@ -1,1 +1,13 @@
 2018-02-08T15:50:30.022 : com.sg.flooringorders.service.OrderDoesNotExistException: Order does not exist in records. :findOrder: 2018-02-02 3 
+2018-02-08T16:23:50.127 : com.sg.flooringorders.service.OrderDoesNotExistException: Order does not exist in records.: findOrder: 2018-02-08 4 
+2018-02-08T16:23:55.144 : java.lang.NullPointerException: editOrder: null 
+2018-02-09T10:31:44.523 : com.sg.flooringorders.service.OrderDoesNotExistException: Order does not exist in records.: findOrder: 2018-02-02 3 
+2018-02-09T10:31:54.555 : java.lang.NullPointerException: editOrder: null 
+2018-02-09T10:39:39.571 : com.sg.flooringorders.service.OrderDoesNotExistException: Order does not exist in records.: findOrder: 2018-02-02 3 
+2018-02-09T16:23:33.114 : com.sg.flooringorders.service.OrderDoesNotExistException: Order does not exist in records.: findOrder: 2018-02-02 3 
+2018-02-09T16:24:02.214 : com.sg.flooringorders.service.ProductNotListedException: Product Not Listed: findProduct: wt 
+2018-02-09T19:15:30.082 : com.sg.flooringorders.service.ProductNotListedException: Product Not Listed: findProduct: wt 
+2018-02-09T19:22:28.743 : com.sg.flooringorders.service.ProductNotListedException: Product Not Listed: findProduct: woo 
+2018-02-09T19:27:40.109 : com.sg.flooringorders.service.NoOrdersOnGivenDateException: There are no orders for this given date: getOrdersByDate: 2018-03-02 
+2018-02-09T19:28:05.527 : com.sg.flooringorders.service.OrderDoesNotExistException: Order does not exist in records.: findOrder: 2018-02-02 3 
+2018-02-11T00:15:00.260 : com.sg.flooringorders.service.NoOrdersOnGivenDateException: There are no orders for this given date: getOrdersByDate: 2018-02-03 

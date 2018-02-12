@@ -40,6 +40,7 @@ public class FlooringOrdersServiceLayerImpl implements FlooringOrdersServiceLaye
 
     @Override
     public Order editOrder(Order orderToEdit) throws OrderDoesNotExistException, FlooringOrdersValidationException {
+        //EDIT
         if (orderToEdit.getOrderNumber() <= 0) {
             throw new OrderDoesNotExistException("Order does not exist in records.");
         }

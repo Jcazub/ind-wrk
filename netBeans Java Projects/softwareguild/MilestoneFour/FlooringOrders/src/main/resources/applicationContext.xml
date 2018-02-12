@@ -23,13 +23,33 @@
    <bean id="dao" class="com.sg.flooringorders.dao.FlooringOrdersDaoFileImpl">
        <property name="mode" value="PROD"/>
    </bean>
+   <bean id="daoTest" class="com.sg.flooringorders.dao.FlooringOrdersDaoFileImpl">
+       <property name="mode" value="TEST"/>
+   </bean>
+   <bean id="daoTraining" class="com.sg.flooringorders.dao.FlooringOrdersDaoFileImpl">
+       <property name="mode" value="TRAINING"/>
+   </bean>
    <bean id="auditDao" class="com.sg.flooringorders.dao.FlooringOrdersAuditDaoFileImpl"/> 
    <bean id="serviceLayer" class="com.sg.flooringorders.service.FlooringOrdersServiceLayerImpl">
        <constructor-arg ref="dao"/>
    </bean>
+   <bean id="serviceLayerTest" class="com.sg.flooringorders.service.FlooringOrdersServiceLayerImpl">
+       <constructor-arg ref="daoTest"/>
+   </bean>
+   <bean id="serviceLayerTraining" class="com.sg.flooringorders.service.FlooringOrdersServiceLayerImpl">
+       <constructor-arg ref="daoTraining"/>
+   </bean>
    <bean id="controller" class="com.sg.flooringorders.controller.FlooringOrdersController">
        <constructor-arg ref="view"/>
        <constructor-arg ref="serviceLayer"/>
+   </bean>
+   <bean id="controllerTest" class="com.sg.flooringorders.controller.FlooringOrdersController">
+       <constructor-arg ref="view"/>
+       <constructor-arg ref="serviceLayerTest"/>
+   </bean>
+   <bean id="controllerTraining" class="com.sg.flooringorders.controller.FlooringOrdersController">
+       <constructor-arg ref="view"/>
+       <constructor-arg ref="serviceLayerTraining"/>
    </bean>
    
    <bean id="loggingAdvice" class="com.sg.flooringorders.advice.FlooringOrdersLoggingAdvice">

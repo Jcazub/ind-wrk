@@ -85,16 +85,17 @@ public class FlooringOrdersController {
     }
     
     private int userSelection() {
-        return view.getUserSelection();
+        return view.getUserNumberSelection("Selection?");
     }
     
     private void displayOrders() {
-        LocalDate ld = view.getDateFromUser();
+        
         try {
+            LocalDate ld = view.getDateFromUser();
             List<Order> orders = service.getOrdersByDate(ld);
             view.listingAllOrders(ld);
             view.displayOrders(orders);
-        } catch (NoOrdersOnGivenDateException e) {
+        } catch (NoOrdersOnGivenDateException | InputErrorException e) {
             view.displayError(e.getMessage());
         }
 
@@ -138,23 +139,27 @@ public class FlooringOrdersController {
     }
     
     private Order getEditedOrder() {
-        boolean hasMaterialError = false;
-        boolean hasStateTaxError = false;
+        boolean hasMaterialError;
+        boolean hasStateTaxError;
         boolean hasLocationError = false;
-        boolean hasBigDecimalError = false;
+        boolean hasBigDecimalError;
         Order orderToEdit = null;
         boolean verification = false;
 
         do {
-            String[] orderDetails = view.getOrderDetails();
-        
-            LocalDate date = LocalDate.parse(orderDetails[0]);
-            int orderNumber = Integer.parseInt(orderDetails[1]);
-            
             try {
-                orderToEdit = service.findOrder(date, orderNumber);
+                //String[] orderDetails = view.getOrderDetails();
+                LocalDate date = view.getDateFromUser();
+                List<Order> orders = service.getOrdersByDate(date);
+                view.displayOrders(orders);
+                int orderNumber = view.getUserNumberSelection("Enter Order Number: ");
+                Order orderReference = service.findOrder(date, orderNumber);
+                orderToEdit = new Order(orderReference);
+//                orderToEdit = new Order(orderReference.getCustomerName(), orderReference.getProduct(), orderReference.getStateTax(), orderReference.getArea());
+//                orderToEdit.setDate(orderReference.getDate());
+//                orderToEdit.setOrderNumber(orderReference.getOrderNumber());
                 hasLocationError = false;
-            } catch (OrderDoesNotExistException e) {
+            } catch (OrderDoesNotExistException | InputErrorException | NoOrdersOnGivenDateException e) {
                 view.displayError(e.getMessage());
                 hasLocationError = true;
             }
@@ -167,6 +172,10 @@ public class FlooringOrdersController {
          
         if (!hasLocationError && orderToEdit != null) {
             do {
+                //reset booleans here?
+                hasMaterialError = false;
+                hasStateTaxError = false;
+                hasBigDecimalError = false;
                 view.displayOrder(orderToEdit);
                 String[] editOrderDetails = view.editOrderRequest(orderToEdit);
 
@@ -218,28 +227,41 @@ public class FlooringOrdersController {
                     }
                 }
             } while (hasMaterialError || hasStateTaxError || hasBigDecimalError);
-            
-            
-            
-            
-//            try {
-//                Product material = service.findProduct(editOrderDetails[1]);
-//                StateTax stateTax = service.findStateTax(editOrderDetails[2]);
-//                Order newOrder = new Order(editOrderDetails[0], material, stateTax, new BigDecimal(addOrderDetails[3]));
-//                newOrder.setDate(LocalDate.now());
-//                service.addOrder(newOrder);
-//                hasFixableErrors = false;
-//            } catch (ProductNotListedException | InvalidStateCodeException | FlooringOrdersValidationException e) {
-//                view.displayError(e.getMessage());
-//                hasFixableErrors = true;
-//            } catch (OrderAlreadyExistsException e) {
-//                view.displayError(e.getMessage());
-//                hasFixableErrors = false;
-//            }
       
         }
          return orderToEdit;
         
+    }
+    
+        
+    private void removeOrder() {
+        boolean inputError = false;
+         
+        do {
+                try {
+                LocalDate date = view.getDateFromUser();
+                List<Order> orders = service.getOrdersByDate(date);
+                view.displayOrders(orders);
+                int orderNumber = view.getUserNumberSelection("Enter Order Number: ");
+                inputError = false;
+                Order orderToRemove = service.findOrder(date, orderNumber);
+                view.displayOrder(orderToRemove);
+                boolean verification = view.verify("Are you sure you want to delete this order?");
+                if (verification) {
+                    service.removeOrder(date, orderNumber);
+                    view.removeOrderSuccessBanner();
+                } else {
+                    view.removeOrderAbortedBanner();
+                }     
+            } catch (OrderDoesNotExistException | NoOrdersOnGivenDateException e) {
+                view.displayError(e.getMessage());
+            } catch (InputErrorException e) {
+                view.displayError(e.getMessage());
+                inputError = true;
+            }
+        } while (inputError);
+        
+
     }
     
     private void editOrder() {
@@ -250,9 +272,17 @@ public class FlooringOrdersController {
             orderToEdit = getEditedOrder();
             
             try {
-                service.editOrder(orderToEdit);
-                hasValidationError = false;
-                view.editedOrderSuccessBanner();
+                if (orderToEdit != null) {
+                    view.displayOrder(orderToEdit);
+                    boolean verification = view.verify("Are you sure you want to edit this order?");
+                    if (verification) {
+                        service.editOrder(orderToEdit);
+                        hasValidationError = false;
+                        view.editedOrderSuccessBanner(); 
+                    } else {
+                        view.editedOrderAbortedBanner();
+                    }     
+                }
             } catch (OrderDoesNotExistException e) {
                 view.displayError(e.getMessage());
                 hasValidationError = false;
@@ -265,28 +295,6 @@ public class FlooringOrdersController {
         } while (hasValidationError);
         
         
-    }
-    
-    private void removeOrder() {
-        String[] orderDetails = view.getOrderDetails();
-        
-        LocalDate date = LocalDate.parse(orderDetails[0]);
-        int orderNumber = Integer.parseInt(orderDetails[1]);
-        
-        try {
-            Order orderToRemove = service.findOrder(date, orderNumber);
-            view.displayOrder(orderToRemove);
-            boolean verification = view.verify("Are you sure you want to delete this order?");
-            if (verification) {
-                service.removeOrder(date, orderNumber);
-                view.removeOrderSuccessBanner();
-            } else {
-                view.removeOrderAbortedBanner();
-            }     
-        } catch (OrderDoesNotExistException e) {
-            view.displayError(e.getMessage());
-        }
-
     }
     
     private void saveCurrentSession() throws FlooringOrdersPersistenceException {

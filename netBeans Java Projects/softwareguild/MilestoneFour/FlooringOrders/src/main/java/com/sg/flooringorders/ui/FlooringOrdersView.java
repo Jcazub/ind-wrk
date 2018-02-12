@@ -9,6 +9,7 @@ import com.sg.flooringorders.dto.Order;
 import com.sg.flooringorders.dto.Product;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
 /**
@@ -32,12 +33,34 @@ public class FlooringOrdersView {
                 + "7. Quit");
     }
     
-    public int getUserSelection() {
-        return io.readInt("Selection?");
+    public int getUserNumberSelection(String prompt) {
+        boolean hasError = false;
+        int n = 0;
+        
+        do {
+            try {
+                n = io.readInt(prompt);
+                hasError = false;
+            } catch (InputErrorException e) {
+                displayError(e.getMessage());
+                hasError = true;
+            }
+        } while (hasError);
+
+        return n;
     }
     
-    public LocalDate getDateFromUser() {
-        return LocalDate.parse(io.readString("Enter Date (YYYY-MM-DD)"));
+    public LocalDate getDateFromUser() throws InputErrorException {
+        LocalDate ld = null;
+        
+        try {
+            ld = LocalDate.parse(io.readString("Enter Date (YYYY-MM-DD)"));
+        } catch (DateTimeParseException e) {
+            throw new InputErrorException("Please enter a valid date");
+        }
+        
+        
+        return ld;
     }
     
     public void displayOrders(List<Order> orders) {
@@ -62,44 +85,66 @@ public class FlooringOrdersView {
         
         this.newBigDCheck(area);
         
+        
         String[] newOrderDetails = {name, materialName, state, area};
+        this.validateData(newOrderDetails);
         return newOrderDetails;
     }
     
     public String[] editOrderRequest(Order orderToEdit) {
-        String name = "", materialName = "", state = "", area = "";
+        //String name = "", materialName = "", state = "", area = "";
+        boolean hasError = false;
+        boolean verification = false;
+        String[] newEditedDetails = new String[4];
         
         do {
-            int choice = io.readInt("Which field would you like to edit?\n"
+            try {
+                int choice = io.readInt("Which field would you like to edit?\n"
                     + "1. Customer Name\n"
                     + "2. Material\n"
                     + "3. State\n"
                     + "4. Area",
                     1, 4);
-            
-            switch(choice) {
+                hasError = false;
+                switch(choice) {
                 case 1:
-                    name = io.readString("Enter Customer Name (Current: " + orderToEdit.getCustomerName() + "):");
+                    newEditedDetails[0] = io.readString("Enter Customer Name (Current: " + orderToEdit.getCustomerName() + "):");
                     break;
                 case 2:
-                    materialName = io.readString("Enter Material: (Current: " + orderToEdit.getProduct().getProductType() + "):");  
+                    newEditedDetails[1] = io.readString("Enter Material: (Current: " + orderToEdit.getProduct().getProductType() + "):");  
                     break;
                 case 3:
-                    state = io.readString("Enter State: (Current: " + orderToEdit.getStateTax().getStateName() + "):");
+                    newEditedDetails[2] = io.readString("Enter State: (Current: " + orderToEdit.getStateTax().getStateName() + "):");
                     break;
                 case 4:
-                    area = io.readString("Enter Area: (Current: " + orderToEdit.getArea() + "):");
+                    newEditedDetails[3] = io.readString("Enter Area: (Current: " + orderToEdit.getArea() + "):");
                     break;
             }
-        } while (this.verify("Edit more fields?"));
+               this.validateData(newEditedDetails);
+            } catch (InputErrorException e) {
+                displayError(e.getMessage());
+                hasError = true;
+            }
+            
+            if (!hasError) {
+                verification = this.verify("Edit more fields?");
+            }
+
+        } while (verification || hasError);
         
-        String[] newEditedDetails = {name, materialName, state, area};
+        
         return newEditedDetails;
     }
     
-    public String[] getOrderDetails() {
+    //Currently not in use
+    public String[] getOrderDetails() throws InputErrorException {
         String date = io.readString("Enter Date (YYYY-MM-DD)");
         String orderNumber = io.readString("Enter order number");
+        
+        if (date.trim().length() == 0
+                || orderNumber.trim().length() == 0) {
+            throw new InputErrorException("Please don't leave input fields empty.");
+        }
         
         String[] userRequestDetails = {date, orderNumber};
         return userRequestDetails;
@@ -136,6 +181,21 @@ public class FlooringOrdersView {
         }
     }
     
+    public void validateData(String[] strArray) throws InputErrorException {
+        for (String s : strArray) {
+                this.validateData(s);   
+        }
+    }
+    
+    public void validateData(String str) throws InputErrorException {
+        String[] stringSplit = str.split("");
+        
+        for (String s : stringSplit) {
+            if (s.equals(":")) {
+                throw new InputErrorException("Cannot use special character :");
+            }
+        }
+    }
     public void addOrderSuccessBanner() {
         io.print("===== Order was added successfully =====");
     }
@@ -154,6 +214,10 @@ public class FlooringOrdersView {
     
     public void editedOrderSuccessBanner() {
         io.print("===== Order was edited successfully =====");
+    }
+    
+    public void editedOrderAbortedBanner() {
+        io.print("===== Edit Order Aborted =====");
     }
     
     public void listingAllOrders(LocalDate date){

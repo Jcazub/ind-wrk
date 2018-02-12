@@ -64,19 +64,29 @@ public class UserIOConsoleImpl implements UserIO {
     }
 
     @Override
-    public int readInt(String prompt) {
+    public int readInt(String prompt) throws InputErrorException {
         int n;
         print(prompt);
-        n = Integer.parseInt(sc.nextLine());
+        try {
+            n = Integer.parseInt(sc.nextLine());
+        } catch (NumberFormatException e) {
+            throw new InputErrorException("Expected a number");
+        }
         return n;
     }
 
     @Override
-    public int readInt(String prompt, int min, int max) {
+    public int readInt(String prompt, int min, int max) throws InputErrorException {
         int n;
+        boolean hasError = false;
         do {
             print(prompt);
-            n = Integer.parseInt(sc.nextLine());
+            try {
+                n = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                throw new InputErrorException("Expected a number");
+            }
+            
         } while (!(n >= min && n <= max));
         return n;
     }

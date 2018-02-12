@@ -1,0 +1,4 @@
+//display order info after hitting edit
+//display order and verification after edit order
+read DI from a file
+//fix verification

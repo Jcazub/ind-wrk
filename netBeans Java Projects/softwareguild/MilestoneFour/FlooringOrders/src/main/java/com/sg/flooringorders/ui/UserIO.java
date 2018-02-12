@@ -23,9 +23,9 @@ public interface UserIO {
 
     float readFloat(String prompt, float min, float max);
 
-    int readInt(String prompt);
+    int readInt(String prompt) throws InputErrorException;
 
-    int readInt(String prompt, int min, int max);
+    int readInt(String prompt, int min, int max) throws InputErrorException;
 
     long readLong(String prompt);
 

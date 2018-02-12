@@ -32,6 +32,15 @@ public class Order {
         this.tax = this.stateTax.getTaxRate().divide(new BigDecimal(100)).multiply(this.materialCost.add(this.laborCost)).setScale(2, RoundingMode.HALF_UP);
         this.total = this.materialCost.add(this.laborCost).add(this.tax);
     }
+    
+    public Order(Order order) {
+        this.customerName = order.getCustomerName();
+        this.area = order.getArea();
+        this.stateTax = order.getStateTax();
+        this.product = order.getProduct();
+        this.orderNumber = order.getOrderNumber();
+        this.date = order.getDate();
+    }
 
     public void setOrderNumber(int orderNumber) {
         this.orderNumber = orderNumber;
