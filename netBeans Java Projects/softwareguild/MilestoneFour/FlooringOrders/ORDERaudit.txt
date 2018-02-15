@@ -12,3 +12,4 @@
 2018-02-11T00:38:18.554 : addOrder: ID: 1 |Customer Name: Jessie |Product: Tile |Area: 700 |State: OH |Date: 2018-02-11 |Total: 5689.69
 2018-02-12T02:42:40.438 : addOrder: ID: 1 |Customer Name: Amy |Product: Laminate |Area: 500 |State: PA |Date: 2018-02-12 |Total: 2054.94
 2018-02-12T02:44:07.912 : addOrder: ID: 2 |Customer Name: James |Product: Wood |Area: 300 |State: PA |Date: 2018-02-12 |Total: 3170.48
+2018-02-12T19:23:42.819 : editOrder: ID: 4 |Customer Name: Johnny |Product: Tile |Area: 123 |State: OH |Date: 2018-02-02 |Total: null

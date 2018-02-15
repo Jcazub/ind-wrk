@@ -11,3 +11,6 @@
 2018-02-09T19:27:40.109 : com.sg.flooringorders.service.NoOrdersOnGivenDateException: There are no orders for this given date: getOrdersByDate: 2018-03-02 
 2018-02-09T19:28:05.527 : com.sg.flooringorders.service.OrderDoesNotExistException: Order does not exist in records.: findOrder: 2018-02-02 3 
 2018-02-11T00:15:00.260 : com.sg.flooringorders.service.NoOrdersOnGivenDateException: There are no orders for this given date: getOrdersByDate: 2018-02-03 
+2018-02-12T18:27:21.206 : com.sg.flooringorders.service.FlooringOrdersValidationException: ERROR: Data fields for order invalid. Try again.: editOrder: ID: 4 |Customer Name: Johnny: |Product: Tile |Area: 123 |State: OH |Date: 2018-02-02 |Total: null 
+2018-02-12T18:27:49.350 : com.sg.flooringorders.service.ProductNotListedException: Product Not Listed: findProduct: Tile: 
+2018-02-12T19:23:24.358 : com.sg.flooringorders.service.FlooringOrdersValidationException: ERROR: Data fields for order invalid. Try again.: editOrder: ID: 4 |Customer Name: Johnny: |Product: Tile |Area: 123 |State: OH |Date: 2018-02-02 |Total: null 

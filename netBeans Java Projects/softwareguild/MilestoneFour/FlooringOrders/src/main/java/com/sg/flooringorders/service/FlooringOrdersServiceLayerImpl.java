@@ -123,6 +123,7 @@ public class FlooringOrdersServiceLayerImpl implements FlooringOrdersServiceLaye
     private void validateData(Order order) throws FlooringOrdersValidationException {
         if (order.getCustomerName() == null
                 || order.getCustomerName().trim().length() == 0
+                || order.getCustomerName().contains(":")
                 || order.getProduct() == null
                 || order.getStateTax() == null
                 || order.getArea().compareTo(new BigDecimal(0)) <= 0 

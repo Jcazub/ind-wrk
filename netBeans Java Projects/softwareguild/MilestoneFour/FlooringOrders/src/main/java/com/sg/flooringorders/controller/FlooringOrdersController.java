@@ -127,7 +127,7 @@ public class FlooringOrdersController {
                     view.addOrderAbortedBanner();
                 }
                 hasFixableErrors = false;  
-            } catch (ProductNotListedException | InvalidStateCodeException | FlooringOrdersValidationException | InputErrorException e) {
+            } catch (ProductNotListedException | InvalidStateCodeException | FlooringOrdersValidationException | InputErrorException | NumberFormatException e) {
                 view.displayError(e.getMessage());
                 hasFixableErrors = true;
             } catch (OrderAlreadyExistsException e) {
@@ -213,10 +213,10 @@ public class FlooringOrdersController {
                         case 3:
                             if (editOrderDetails[i].trim().length() != 0) {
                                 try {
-                                    view.newBigDCheck(editOrderDetails[i]);
+                                    //view.newBigDCheck(editOrderDetails[i]);
                                     orderToEdit.setArea(new BigDecimal(editOrderDetails[i]));
                                     hasBigDecimalError = false;
-                                } catch (InputErrorException e) {
+                                } catch (NumberFormatException e) {
                                     view.displayError(e.getMessage());
                                     hasBigDecimalError = true;
                                 }

@@ -83,11 +83,11 @@ public class FlooringOrdersView {
         String state = io.readString("State (i.e. NY): ");
         String area = io.readString("Area: ");
         
-        this.newBigDCheck(area);
+        //this.newBigDCheck(area);
         
         
         String[] newOrderDetails = {name, materialName, state, area};
-        this.validateData(newOrderDetails);
+        //this.validateData(newOrderDetails);
         return newOrderDetails;
     }
     
@@ -95,7 +95,7 @@ public class FlooringOrdersView {
         //String name = "", materialName = "", state = "", area = "";
         boolean hasError = false;
         boolean verification = false;
-        String[] newEditedDetails = new String[4];
+        String[] newEditedDetails = {"","","",""};
         
         do {
             try {
@@ -120,11 +120,12 @@ public class FlooringOrdersView {
                     newEditedDetails[3] = io.readString("Enter Area: (Current: " + orderToEdit.getArea() + "):");
                     break;
             }
-               this.validateData(newEditedDetails);
+               //this.validateData(newEditedDetails);
             } catch (InputErrorException e) {
                 displayError(e.getMessage());
                 hasError = true;
             }
+
             
             if (!hasError) {
                 verification = this.verify("Edit more fields?");
@@ -173,29 +174,33 @@ public class FlooringOrdersView {
         return verification.equalsIgnoreCase("y");
     }
     
-    public void newBigDCheck(String area) throws InputErrorException {
-        try {
-            new BigDecimal(area);
-        } catch (NumberFormatException e) {
-            throw new InputErrorException("Input a number");
-        }
-    }
+//    public void newBigDCheck(String area) throws InputErrorException {
+//        try {
+//            new BigDecimal(area);
+//        } catch (NumberFormatException e) {
+//            throw new InputErrorException("Input a number");
+//        }
+//    }
     
-    public void validateData(String[] strArray) throws InputErrorException {
-        for (String s : strArray) {
-                this.validateData(s);   
-        }
-    }
-    
-    public void validateData(String str) throws InputErrorException {
-        String[] stringSplit = str.split("");
-        
-        for (String s : stringSplit) {
-            if (s.equals(":")) {
-                throw new InputErrorException("Cannot use special character :");
-            }
-        }
-    }
+//    public void validateData(String[] strArray) throws InputErrorException {
+//        for (String s : strArray) {
+//                this.validateData(s);   
+//        }
+//    }
+//    
+//    public void validateData(String str) throws InputErrorException {
+//        
+//        if (str == null) {
+//            String[] stringSplit = str.split("");
+//        
+//            for (String s : stringSplit) {
+//                if (s.equals(":")) {
+//                    throw new InputErrorException("Cannot use special character :");
+//                }
+//            }
+//        }
+//        
+//    }
     public void addOrderSuccessBanner() {
         io.print("===== Order was added successfully =====");
     }
