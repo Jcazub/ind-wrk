@@ -148,16 +148,12 @@ public class FlooringOrdersController {
 
         do {
             try {
-                //String[] orderDetails = view.getOrderDetails();
                 LocalDate date = view.getDateFromUser();
                 List<Order> orders = service.getOrdersByDate(date);
                 view.displayOrders(orders);
                 int orderNumber = view.getUserNumberSelection("Enter Order Number: ");
                 Order orderReference = service.findOrder(date, orderNumber);
                 orderToEdit = new Order(orderReference);
-//                orderToEdit = new Order(orderReference.getCustomerName(), orderReference.getProduct(), orderReference.getStateTax(), orderReference.getArea());
-//                orderToEdit.setDate(orderReference.getDate());
-//                orderToEdit.setOrderNumber(orderReference.getOrderNumber());
                 hasLocationError = false;
             } catch (OrderDoesNotExistException | InputErrorException | NoOrdersOnGivenDateException e) {
                 view.displayError(e.getMessage());
@@ -172,7 +168,6 @@ public class FlooringOrdersController {
          
         if (!hasLocationError && orderToEdit != null) {
             do {
-                //reset booleans here?
                 hasMaterialError = false;
                 hasStateTaxError = false;
                 hasBigDecimalError = false;

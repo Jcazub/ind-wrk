@@ -14,3 +14,11 @@
 2018-02-12T18:27:21.206 : com.sg.flooringorders.service.FlooringOrdersValidationException: ERROR: Data fields for order invalid. Try again.: editOrder: ID: 4 |Customer Name: Johnny: |Product: Tile |Area: 123 |State: OH |Date: 2018-02-02 |Total: null 
 2018-02-12T18:27:49.350 : com.sg.flooringorders.service.ProductNotListedException: Product Not Listed: findProduct: Tile: 
 2018-02-12T19:23:24.358 : com.sg.flooringorders.service.FlooringOrdersValidationException: ERROR: Data fields for order invalid. Try again.: editOrder: ID: 4 |Customer Name: Johnny: |Product: Tile |Area: 123 |State: OH |Date: 2018-02-02 |Total: null 
+2018-02-15T09:47:03.478 : com.sg.flooringorders.service.InvalidStateCodeException: State Code entered incorrectly: findStateTax: OHadhsd 
+2018-02-15T10:14:01.787 : com.sg.flooringorders.service.NoOrdersOnGivenDateException: There are no orders for this given date: getOrdersByDate: 2018-02-06 
+2018-02-15T10:20:08.090 : com.sg.flooringorders.service.ProductNotListedException: Product Not Listed: findProduct: kf 
+2018-02-15T10:20:23.257 : com.sg.flooringorders.service.ProductNotListedException: Product Not Listed: findProduct: hh 
+2018-02-15T10:36:22.818 : com.sg.flooringorders.service.ProductNotListedException: Product Not Listed: findProduct: Woood 
+2018-02-15T10:36:49.060 : com.sg.flooringorders.service.InvalidStateCodeException: State Code entered incorrectly: findStateTax: OHH 
+2018-02-15T10:37:29.735 : com.sg.flooringorders.service.NoOrdersOnGivenDateException: There are no orders for this given date: getOrdersByDate: 2018-02-14 
+2018-02-15T11:17:39.373 : com.sg.flooringorders.service.OrderDoesNotExistException: Order does not exist in records.: findOrder: 2018-02-15 0 

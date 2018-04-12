@@ -40,6 +40,10 @@ public class Order {
         this.product = order.getProduct();
         this.orderNumber = order.getOrderNumber();
         this.date = order.getDate();
+        this.materialCost = this.product.getCostPerSqFt().multiply(area).setScale(2, RoundingMode.HALF_UP);
+        this.laborCost = this.product.getLaborCostPerSqFt().multiply(area).setScale(2, RoundingMode.HALF_UP);
+        this.tax = this.stateTax.getTaxRate().divide(new BigDecimal(100)).multiply(this.materialCost.add(this.laborCost)).setScale(2, RoundingMode.HALF_UP);
+        this.total = this.materialCost.add(this.laborCost).add(this.tax);
     }
 
     public void setOrderNumber(int orderNumber) {
