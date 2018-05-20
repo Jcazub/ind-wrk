@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vending Machine Assignment</title>
+        <link href="css/bootstrap.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <h1 style="text-align: center">Vending Machine</h1>
+            <hr/>
+            <ul class="list-group" id="errorMessages"></ul>
+
+            <div class="row">
+              <div class="col-md-8">
+                <h2 style="text-align: center">Available Snacks</h2>
+                <div id="displayVendingItems">
+
+                </div> <!-- closes displayVendingItems -->
+              </div>
+
+
+              <div id="inputContainer">
+                <div class="col-md-4" align="center">
+                  <h2 style="text-align: center">Total $ In</h2>
+                  <br>
+                  <input class="form-control"
+                  type="text"
+                  id="cashInput" disabled>
+                  <br>
+                  <div class="row"> <!-- row for first row buttons -->
+                    <div class="col-md-6">
+                      <button class="btn btn-default" id="addDollarBtn">Add Dollar</button>
+                    </div>
+
+                    <div class="col-md-6">
+                      <button class="btn btn-default" id="addQuarterBtn">Add Quarter</button>
+                  </div>
+
+                  </div>
+
+                  <br>
+
+                  <div class="row"> <!-- row for second row buttons -->
+
+                    <div class="col-md-6">
+                      <button class="btn btn-default" id="addDimeBtn">Add Dime</button>
+                    </div>
+
+                    <div class="col-md-6">
+                      <button class="btn btn-default" id="addNickelBtn">Add Nickel</button>
+                  </div>
+
+                  </div>
+
+                <hr/>
+
+              <!-- Start of messages section -->
+
+                <h2 style="text-align: center">Messages</h2>
+                <br>
+                <input class="form-control"
+                type="text"
+                id="messageBox" disabled>
+                <br>
+
+              <form class="form-horizontal" role="form" id="itemForm">
+                <div class="form-group">
+                  <label for="itemInput" class="col-md-4 control-label">Item: </label>
+                  <div class="col-md-8">
+                    <input class="form-control"
+                    type:"text"
+                    id="itemInput" disabled>
+                  </div>
+                  <br>
+                </div>
+              </form>
+
+                <button class="btn btn-default" id="makePurchaseBtn">Make Purchase</button>
+                <button class="btn btn-default" id="changeReturnBtn">Change Return</button>
+            <hr/>
+
+            <!-- Start of change section -->
+
+              <h2 style="text-align: center">Change</h2>
+              <input class="form-control"
+              type="text"
+              id="changeOutput" disabled>
+
+
+            </div>
+
+        </div>
+      </div>
+    </div>
+        <script src="js/jquery-2.2.4.min.js"></script>
+        <script src="js/home.js"></script>
+    </body>
+</html>

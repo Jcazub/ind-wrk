@@ -1,2 +1,0 @@
-chocolate bar::2.00::5::
-laffy taffy::0.75::8::

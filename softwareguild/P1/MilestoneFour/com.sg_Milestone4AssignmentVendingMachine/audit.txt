@@ -1,0 +1,1 @@
+2018-02-01T10:02:15.504 : purchaseItemInInventorycom.sg.vendingmachine.service.InsufficientFundsException: Not enough cash to vend this option.: Name: laffy taffy |Price: 1.50 |Inventory: 100.50

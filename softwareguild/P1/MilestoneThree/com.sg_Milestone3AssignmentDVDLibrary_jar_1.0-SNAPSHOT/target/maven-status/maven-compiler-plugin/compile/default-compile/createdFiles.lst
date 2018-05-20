@@ -1,0 +1,11 @@
+com\sg\DVDLibrary\dao\DVDLibraryDaoConsoleImpl.class
+com\sg\DVDLibrary\App.class
+com\sg\DVDLibrary\dao\DVDLibraryDaoException.class
+com\sg\DVDLibrary\dao\DVDLibraryLambdaDao.class
+com\sg\DVDLibrary\dao\DVDLibraryLambdaDaoConsoleImpl.class
+com\sg\DVDLibrary\ui\UserIO.class
+com\sg\DVDLibrary\dao\DVDLibraryDao.class
+com\sg\DVDLibrary\ui\DVDLibraryView.class
+com\sg\DVDLibrary\ui\UserIOConsoleImpl.class
+com\sg\DVDLibrary\controller\DVDLibraryController.class
+com\sg\DVDLibrary\dto\DVD.class

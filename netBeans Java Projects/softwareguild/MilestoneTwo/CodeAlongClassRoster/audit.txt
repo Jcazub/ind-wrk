@@ -1,3 +1,0 @@
-2018-02-01T07:53:47.316 : createStudent: ID: 0004 |Name: John Doe |Cohort: Java 2017
-2018-02-01T07:55:13.108 : createStudent: ID: 0005 |Name: Jane Doe |Cohort: Java 2017
-2018-02-01T07:59:32.265 : createStudent: ID: 0006 |Name: Michael Doe |Cohort: Java 2017
