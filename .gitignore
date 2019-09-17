@@ -1,3 +1,5 @@
+.DS_Store
+*.idea
 /netBeans Java Projects/softwareguild/MilestoneOne/ExerciseTwo/target/
 /netBeans Java Projects/softwareguild/MilestoneOne/HeroRPG/target/
 /netBeans Java Projects/softwareguild/MilestoneOne/ExerciseFour/target/
